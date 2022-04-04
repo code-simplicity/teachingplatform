@@ -9,6 +9,9 @@ import {
   codemirror
 } from 'vue-codemirror'
 import 'codemirror/lib/codemirror.css'
+// 使用animate.css动画库
+import animated from "animate.css"
+Vue.use(animated)
 Vue.use(codemirror)
 // 阻止 vue 在启动时生成生产提示
 Vue.config.productionTip = false

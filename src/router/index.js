@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue from 'vue';
 import VueRouter from 'vue-router'
 import Home from 'views/Home.vue'
 import Welcome from 'components/Welcome.vue'
@@ -13,20 +13,50 @@ import QuickSort from 'components/Sort/QuickSort.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
-  { path: '/', redirect: '/home' },
+const routes = [{
+    path: '/',
+    redirect: '/home'
+  },
+  {
+    path: '/login',
+    name: "login",
+    metaL: {
+      title: "登录"
+    },
+    component: () => import("@/views/login/index.vue")
+  },
   {
     path: '/home',
     redirect: '/welcome',
     component: Home,
-    children: [
-      { path: '/bubbleSort', component: BubbleSort },
-      { path: '/welcome', component: Welcome },
-      { path: '/insertSort', component: InsertSort },
-      { path: '/selectSort', component: SelectSort },
-      { path: '/shellSort', component: ShellSort },
-      { path: '/quickSort', component: QuickSort },
-      { path: '/mergeSort', component: MergeSort }
+    children: [{
+        path: '/bubbleSort',
+        component: BubbleSort
+      },
+      {
+        path: '/welcome',
+        component: Welcome
+      },
+      {
+        path: '/insertSort',
+        component: InsertSort
+      },
+      {
+        path: '/selectSort',
+        component: SelectSort
+      },
+      {
+        path: '/shellSort',
+        component: ShellSort
+      },
+      {
+        path: '/quickSort',
+        component: QuickSort
+      },
+      {
+        path: '/mergeSort',
+        component: MergeSort
+      }
 
     ]
   }

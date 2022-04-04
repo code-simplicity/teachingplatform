@@ -40,7 +40,10 @@
               }}</el-menu-item>
             </template>
           </el-submenu>
-          <el-submenu v-if="Object.keys(smellNavItems).length === 0?false:true" index="20">
+          <el-submenu
+            v-if="Object.keys(smellNavItems).length === 0 ? false : true"
+            index="20"
+          >
             <template slot="title">
               <i
                 class="el-icon-s-fold"
@@ -79,6 +82,16 @@
             </template>
           </el-submenu>
         </div>
+        <div class="user-info">
+          <el-dropdown @command="handleCommand">
+            <span>admin</span> <i class="el-icon-user-solid"></i>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item command="logout" icon="el-icon-switch-button"
+                >退出登录</el-dropdown-item
+              >
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
       </el-menu>
     </el-header>
     <el-main>
@@ -95,82 +108,103 @@
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
       music: false,
       screenWidth: document.body.clientWidth,
       audio: {},
       timer: false,
-      musicVal: '千里千寻.mp3',
-      backgroundColor: '#545c64',
-      body: document.querySelector('body'),
+      musicVal: "千里千寻.mp3",
+      backgroundColor: "#545c64",
+      body: document.querySelector("body"),
       navItems: []
-    }
+    };
   },
   watch: {
-    screenWidth (newValue) {
+    screenWidth(newValue) {
       if (!this.timer) {
-        this.screenWidth = newValue
-        this.timer = true
+        this.screenWidth = newValue;
+        this.timer = true;
         setTimeout(() => {
-          this.timer = false
-        }, 400)
+          this.timer = false;
+        }, 400);
       }
     }
   },
   computed: {
-    bigNavItems: function () {
-      return this.screenWidth >= 829 ? this.navItems : {}
+    bigNavItems: function() {
+      return this.screenWidth >= 829 ? this.navItems : {};
     },
-    smellNavItems: function () {
-      return this.screenWidth < 829 ? this.navItems : {}
+    smellNavItems: function() {
+      return this.screenWidth < 829 ? this.navItems : {};
     }
   },
-  mounted () {
+  mounted() {
     // 获取导航栏信息
-    this.navItems = require('@/json/navItems.json')
+    this.navItems = require("@/json/navItems.json");
     // 获取audio背景音乐
-    this.audio = document.getElementById('audio')
-    this.changeMusic()
-    this.changeThem()
-    this.$EventBus.$on('change-theme', () => {
-      this.changeThem()
-    })
-    this.$EventBus.$on('change-music', () => {
-      this.changeMusic()
-    })
+    this.audio = document.getElementById("audio");
+    this.changeMusic();
+    this.changeThem();
+    this.$EventBus.$on("change-theme", () => {
+      this.changeThem();
+    });
+    this.$EventBus.$on("change-music", () => {
+      this.changeMusic();
+    });
     window.onresize = () => {
-      this.screenWidth = document.body.clientWidth
-    }
+      this.screenWidth = document.body.clientWidth;
+    };
   },
   methods: {
-    changeMusic () {
+    // 退出登录
+    handleCommand(command) {
+      switch (command) {
+        case "logout":
+          this.doLogout();
+          break;
+      }
+    },
+    // 退出登录的方法
+    doLogout() {
+      this.$router.replace({
+        path: "login"
+      });
+      this.$message({
+        message: "退出登录成功",
+        type: "success"
+      });
+    },
+    changeMusic() {
       // 获取系统设置背景音乐
-      const music = JSON.parse(window.sessionStorage.getItem('music'))
+      const music = JSON.parse(window.sessionStorage.getItem("music"));
       if (music) {
-        [this.music, this.musicVal] = music
+        [this.music, this.musicVal] = music;
         if (this.music) {
-          setTimeout(() => { this.audio.play() }, 800)
+          setTimeout(() => {
+            this.audio.play();
+          }, 800);
         } else {
-          this.audio.pause()
+          this.audio.pause();
         }
       }
     },
-    changeThem () {
+    changeThem() {
       // 获取系统设置主题
-      const them = JSON.parse(window.sessionStorage.getItem('theme'))
-      console.log(them)
+      const them = JSON.parse(window.sessionStorage.getItem("theme"));
+      console.log(them);
       if (them) {
-        this.backgroundColor = them[1]
-        this.body.style.background = them[1] === '#545c64' ? 'rgba(200,200,200,0.5)' : them[1]
+        this.backgroundColor = them[1];
+        this.body.style.background =
+          them[1] === "#545c64" ? "rgba(200,200,200,0.5)" : them[1];
       }
     }
   }
-}
+};
 </script>
 <style lang="less" scoped>
 .el-header {
-  position:  fixed;
+  position: fixed;
   width: 100%;
   top: 0;
   left: 0;
@@ -188,12 +222,24 @@ export default {
         float: left;
       }
     }
+    .user-info {
+      position: absolute;
+      right: 20px;
+      top: 25%;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      /deep/.el-dropdown {
+        color: #fff;
+        font-size: 14px;
+      }
+    }
   }
 }
 .el-container {
   top: 0px;
   margin: 0 20px;
-  padding:30px 0 20px;
+  padding: 30px 0 20px;
   border-radius: 20px;
   background-image: linear-gradient(
     to bottom,
