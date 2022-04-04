@@ -1,0 +1,26 @@
+[
+    {
+      "value": "#545c64",
+      "label": "默认"
+    },
+    {
+      "value": "#D1BA74",
+      "label": "棕色"
+    },
+    {
+      "value": "#F4606C",
+      "label": "红色"
+    },
+    {
+      "value": "#67C23A",
+      "label": "绿色"
+    },
+    {
+      "value": "black",
+      "label": "黑色"
+    },
+    {
+      "value": "#8CC7B5",
+      "label": "蓝色"
+    }
+  ]

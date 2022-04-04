@@ -1,0 +1,43 @@
+/* 全局样式表 */
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  /* min-width: 760px; */
+  min-width: 754px;
+}
+body {
+    background: rgba(200, 200, 200, 0.5);
+}
+/* 面包屑 */
+.el-breadcrumb {
+  margin-bottom: 15px;
+  font-size: 12px;
+}
+
+.el-card {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15) !important;
+}
+
+.el-table {
+  margin-top: 15px;
+  font-size: 12px;
+}
+.el-footer {
+  height: auto !important;
+}
+/* 分页 */
+.el-pagination {
+  margin-top: 15px;
+}
+/*代码编译器*/
+.CodeMirror {
+  height: auto !important;
+  padding-left: 12px !important;
+}
+/* .cm-s-dracula.CodeMirror, .cm-s-dracula .CodeMirror-gutters {
+    background-color: black !important;
+} */

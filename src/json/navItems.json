@@ -1,0 +1,33 @@
+[
+    {
+      "iconfont": "icon-18qianyanjishu",
+      "name": "排序",
+      "path": "1",
+      "children": [
+        {
+          "name": "选择排序",
+          "path": "/selectSort"
+        },
+        {
+          "name": "插入排序",
+          "path": "/insertSort"
+        },
+        {
+          "name": "冒泡排序",
+          "path": "/bubbleSort"
+        },
+        {
+          "name": "希尔排序",
+          "path": "/shellSort"
+        },
+        {
+          "name": "快速排序",
+          "path": "/quickSort"
+        },
+        {
+          "name": "归并排序",
+          "path": "/mergeSort"
+        }
+      ]
+    }
+  ]

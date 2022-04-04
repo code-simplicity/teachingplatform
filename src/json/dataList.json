@@ -1,0 +1,26 @@
+[
+    {
+      "title": "冒泡排序",
+      "path": "/bubbleSort"
+    },
+    {
+      "title": "选择排序",
+      "path": "/selectSort"
+    },
+    {
+      "title": "插入排序",
+      "path": "/insertSort"
+    },
+    {
+      "title": "希尔排序",
+      "path": "/shellSort"
+    },
+    {
+      "title": "快速排序",
+      "path": "/shellSort"
+    },
+    {
+      "title": "归并排序",
+      "path": "/shellSort"
+    }
+  ]
