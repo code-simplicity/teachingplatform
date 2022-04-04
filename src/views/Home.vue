@@ -24,7 +24,7 @@
             <template v-for="(subItem, subIndex) in item.children">
               <el-submenu
                 v-if="subItem.children"
-                :key="subIndex"
+                :key="subItem"
                 :index="subItem.path"
               >
                 <template slot="title">{{ subItem.name }}</template>
@@ -63,7 +63,7 @@
                 <template v-for="(subItem, subIndex) in item.children">
                   <el-submenu
                     v-if="subItem.children"
-                    :key="subIndex"
+                    :key="subItem"
                     :index="subItem.path"
                   >
                     <template slot="title">{{ subItem.name }}</template>
