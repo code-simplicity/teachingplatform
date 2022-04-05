@@ -238,7 +238,6 @@ export default {
 }
 .el-container {
   top: 0px;
-  margin: 0 20px;
   padding: 30px 0 20px;
   border-radius: 20px;
   background-image: linear-gradient(
